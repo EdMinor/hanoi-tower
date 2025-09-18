@@ -55,26 +55,75 @@ export const useSound = () => {
 
   // Звуки для разных действий
   const playMove = useCallback(() => {
-    createSound(800, 0.1, 'sine');
+    // Звук перемещения диска - более реалистичный
+    const frequencies = [400, 500, 600];
+    const randomFreq = frequencies[Math.floor(Math.random() * frequencies.length)];
+    createSound(randomFreq, 0.15, 'sine');
   }, [createSound]);
 
   const playError = useCallback(() => {
-    createSound(200, 0.2, 'sawtooth');
+    // Звук ошибки - более резкий
+    createSound(150, 0.3, 'sawtooth');
+    setTimeout(() => createSound(100, 0.2, 'sawtooth'), 50);
   }, [createSound]);
 
   const playVictory = useCallback(() => {
-    // Играем мелодию победы
-    createSound(523, 0.2, 'sine'); // C5
-    setTimeout(() => createSound(659, 0.2, 'sine'), 100); // E5
-    setTimeout(() => createSound(784, 0.3, 'sine'), 200); // G5
+    // Улучшенная мелодия победы
+    const melody = [
+      { freq: 523, duration: 0.2 }, // C5
+      { freq: 659, duration: 0.2 }, // E5
+      { freq: 784, duration: 0.2 }, // G5
+      { freq: 1047, duration: 0.4 }, // C6
+    ];
+    
+    melody.forEach((note, index) => {
+      setTimeout(() => {
+        createSound(note.freq, note.duration, 'sine');
+      }, index * 150);
+    });
   }, [createSound]);
 
   const playClick = useCallback(() => {
-    createSound(600, 0.05, 'sine');
+    // Звук клика - короткий и приятный
+    createSound(800, 0.08, 'sine');
   }, [createSound]);
 
   const playHint = useCallback(() => {
-    createSound(1000, 0.15, 'sine');
+    // Звук подсказки - восходящая мелодия
+    createSound(600, 0.1, 'sine');
+    setTimeout(() => createSound(800, 0.1, 'sine'), 50);
+    setTimeout(() => createSound(1000, 0.15, 'sine'), 100);
+  }, [createSound]);
+
+  const playSelect = useCallback(() => {
+    // Звук выбора башни
+    createSound(700, 0.1, 'triangle');
+  }, [createSound]);
+
+  const playDrop = useCallback(() => {
+    // Звук размещения диска
+    createSound(300, 0.2, 'sine');
+  }, [createSound]);
+
+  const playStart = useCallback(() => {
+    // Звук начала игры
+    const startMelody = [
+      { freq: 440, duration: 0.1 }, // A4
+      { freq: 554, duration: 0.1 }, // C#5
+      { freq: 659, duration: 0.2 }, // E5
+    ];
+    
+    startMelody.forEach((note, index) => {
+      setTimeout(() => {
+        createSound(note.freq, note.duration, 'sine');
+      }, index * 100);
+    });
+  }, [createSound]);
+
+  const playReset = useCallback(() => {
+    // Звук сброса игры
+    createSound(200, 0.3, 'sawtooth');
+    setTimeout(() => createSound(150, 0.2, 'sawtooth'), 100);
   }, [createSound]);
 
   // Переключение звука
@@ -104,6 +153,10 @@ export const useSound = () => {
     playVictory,
     playClick,
     playHint,
+    playSelect,
+    playDrop,
+    playStart,
+    playReset,
     toggleSound,
     mute,
     unmute,

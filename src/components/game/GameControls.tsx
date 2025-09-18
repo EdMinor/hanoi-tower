@@ -8,6 +8,7 @@ const GameControls: React.FC<GameControlsProps> = ({
   onStartGame,
   onResetGame,
   onSetDiscCount,
+  onPlayClick,
   className = '',
 }) => {
   const discCountOptions = [3, 4, 5, 6];
@@ -18,7 +19,10 @@ const GameControls: React.FC<GameControlsProps> = ({
         {/* Main Controls - горизонтально */}
         <div className="flex flex-wrap gap-3 justify-center">
           <Button
-            onClick={onStartGame}
+            onClick={() => {
+              onPlayClick?.();
+              onStartGame();
+            }}
             disabled={gameState.gameStarted && !gameState.gameCompleted}
             icon={<Play size={16} />}
             variant="primary"
@@ -27,7 +31,10 @@ const GameControls: React.FC<GameControlsProps> = ({
           </Button>
           
           <Button
-            onClick={onResetGame}
+            onClick={() => {
+              onPlayClick?.();
+              onResetGame();
+            }}
             disabled={!gameState.gameStarted}
             icon={<RotateCcw size={16} />}
             variant="secondary"
@@ -47,7 +54,10 @@ const GameControls: React.FC<GameControlsProps> = ({
               {discCountOptions.map(count => (
                 <Button
                   key={count}
-                  onClick={() => onSetDiscCount(count)}
+                  onClick={() => {
+                    onPlayClick?.();
+                    onSetDiscCount(count);
+                  }}
                   variant={gameState.discCount === count ? 'primary' : 'secondary'}
                   size="sm"
                   className="min-w-[40px]"

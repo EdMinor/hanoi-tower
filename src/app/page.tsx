@@ -26,7 +26,17 @@ export default function Home() {
   } = useGame(4);
 
   const { theme, toggleTheme } = useTheme();
-  const { soundEnabled, toggleSound, playMove, playError, playVictory } = useSound();
+  const { 
+    soundEnabled, 
+    toggleSound, 
+    playError, 
+    playVictory, 
+    playClick, 
+    playSelect, 
+    playDrop, 
+    playStart, 
+    playReset 
+  } = useSound();
 
   const [showVictoryModal, setShowVictoryModal] = React.useState(false);
 
@@ -34,11 +44,16 @@ export default function Home() {
   const handleTowerClick = React.useCallback((towerIndex: number) => {
     const success = selectTower(towerIndex);
     if (success) {
-      playMove();
+      // Проверяем, был ли это выбор башни или перемещение
+      if (gameState.selectedTower === null) {
+        playSelect(); // Звук выбора башни
+      } else {
+        playDrop(); // Звук размещения диска
+      }
     } else {
       playError();
     }
-  }, [selectTower, playMove, playError]);
+  }, [selectTower, playSelect, playDrop, playError, gameState.selectedTower]);
 
 
   // Клавиатурное управление
@@ -54,16 +69,18 @@ export default function Home() {
       
       // Дополнительные клавиши (всегда доступны)
       if (key === 'r' || key === 'R') {
+        playReset();
         resetGame();
       }
       if (key === 'n' || key === 'N') {
+        playStart();
         startGame();
       }
     };
 
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [gameState.gameStarted, gameState.gameCompleted, handleTowerClick, resetGame, startGame]);
+  }, [gameState.gameStarted, gameState.gameCompleted, handleTowerClick, resetGame, startGame, playReset, playStart]);
 
   // Показ модального окна победы
   React.useEffect(() => {
@@ -139,6 +156,7 @@ export default function Home() {
                 onStartGame={startGame}
                 onResetGame={resetGame}
                 onSetDiscCount={setDiscCount}
+                onPlayClick={playClick}
               />
             </div>
           </div>

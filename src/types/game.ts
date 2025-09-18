@@ -59,6 +59,7 @@ export interface GameControlsProps {
   onStartGame: () => void;
   onResetGame: () => void;
   onSetDiscCount: (count: number) => void;
+  onPlayClick?: () => void;
   className?: string;
 }
 
