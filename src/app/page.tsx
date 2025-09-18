@@ -40,6 +40,11 @@ export default function Home() {
 
   const [showVictoryModal, setShowVictoryModal] = React.useState(false);
 
+  // Функция для закрытия модалки победы без сброса игры
+  const closeVictoryModal = React.useCallback(() => {
+    setShowVictoryModal(false);
+  }, []);
+
   // Обработка клика по башне
   const handleTowerClick = React.useCallback((towerIndex: number) => {
     const success = selectTower(towerIndex);
@@ -88,7 +93,7 @@ export default function Home() {
       setShowVictoryModal(true);
       playVictory();
     }
-  }, [gameState.gameCompleted, showVictoryModal, playVictory]);
+  }, [gameState.gameCompleted, playVictory]);
 
   const minMoves = getMinMoves();
   const efficiency = getEfficiency();
@@ -165,7 +170,7 @@ export default function Home() {
         {/* Victory Modal */}
         <Modal
           isOpen={showVictoryModal}
-          onClose={() => setShowVictoryModal(false)}
+          onClose={closeVictoryModal}
           title="🎉 Поздравляем!"
           size="md"
         >
@@ -177,22 +182,10 @@ export default function Home() {
               Минимальное количество ходов: <strong>{minMoves}</strong><br />
               Эффективность: <strong>{efficiency}%</strong>
             </p>
-            <div className="flex gap-3 justify-center">
+            <div className="flex justify-center">
               <Button
-                onClick={() => {
-                  setShowVictoryModal(false);
-                  startGame();
-                }}
+                onClick={closeVictoryModal}
                 variant="primary"
-              >
-                Играть снова
-              </Button>
-              <Button
-                onClick={() => {
-                  setShowVictoryModal(false);
-                  resetGame();
-                }}
-                variant="secondary"
               >
                 Закрыть
               </Button>
