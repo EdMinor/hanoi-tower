@@ -39,6 +39,7 @@ export default function Home() {
   } = useSound();
 
   const [showVictoryModal, setShowVictoryModal] = React.useState(false);
+  const victoryModalShownRef = React.useRef(false);
 
   // Функция для закрытия модалки победы без сброса игры
   const closeVictoryModal = React.useCallback(() => {
@@ -89,11 +90,19 @@ export default function Home() {
 
   // Показ модального окна победы
   React.useEffect(() => {
-    if (gameState.gameCompleted && !showVictoryModal) {
+    if (gameState.gameCompleted && !showVictoryModal && !victoryModalShownRef.current) {
       setShowVictoryModal(true);
+      victoryModalShownRef.current = true;
       playVictory();
     }
-  }, [gameState.gameCompleted, playVictory]);
+  }, [gameState.gameCompleted, showVictoryModal, playVictory]);
+
+  // Сброс флага показа модалки при новой игре
+  React.useEffect(() => {
+    if (!gameState.gameStarted) {
+      victoryModalShownRef.current = false;
+    }
+  }, [gameState.gameStarted]);
 
   const minMoves = getMinMoves();
   const efficiency = getEfficiency();
