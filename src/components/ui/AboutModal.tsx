@@ -136,7 +136,7 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                 edmin.dev
               </a>
               <a
-                href="https://github.com/edmin-dev"
+                href="https://github.com/EdMinor"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors text-sm"
