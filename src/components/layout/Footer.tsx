@@ -40,16 +40,6 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
               >
                 Datenschutz
               </button>
-              <button
-                onClick={() => {
-                  // Clear cookie consent to show banner again
-                  localStorage.removeItem('cookie-consent');
-                  window.location.reload();
-                }}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Cookie-Einstellungen
-              </button>
             </div>
           </div>
         </div>
