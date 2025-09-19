@@ -12,6 +12,7 @@ import Stats from '@/components/ui/Stats';
 import Modal from '@/components/ui/Modal';
 import Button from '@/components/ui/Button';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 export default function Home() {
   const {
@@ -204,6 +205,9 @@ export default function Home() {
           </div>
         </Modal>
       </div>
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
