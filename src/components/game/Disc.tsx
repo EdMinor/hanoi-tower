@@ -30,8 +30,8 @@ const Disc: React.FC<DiscProps> = ({
 
   // Вычисляем ширину диска на основе размера
   const getDiscWidth = (size: number): string => {
-    const baseWidth = 20; // Минимальная ширина
-    const widthIncrement = 8; // Увеличение на каждый размер
+    const baseWidth = 16; // Минимальная ширина для мобильных
+    const widthIncrement = 6; // Увеличение на каждый размер
     const width = baseWidth + (size - 1) * widthIncrement;
     return `${width}px`;
   };
@@ -78,14 +78,14 @@ const Disc: React.FC<DiscProps> = ({
       className={`
         ${getDiscColor(size)}
         rounded-lg shadow-md border-2 border-white dark:border-gray-700
-        flex items-center justify-center text-white font-bold text-sm
+        flex items-center justify-center text-white font-bold text-xs sm:text-sm
         transition-all duration-200 hover:shadow-lg
         ${className}
       `}
       style={{
         width: getDiscWidth(size),
-        height: '20px',
-        minWidth: '20px',
+        height: '16px',
+        minWidth: '16px',
       }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}

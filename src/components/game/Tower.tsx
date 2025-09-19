@@ -56,20 +56,20 @@ const Tower: React.FC<TowerProps> = ({
       onMouseEnter={() => onHover?.(towerIndex)}
       onMouseLeave={() => onLeave?.(towerIndex)}
       className={`
-        relative flex flex-col-reverse items-center cursor-pointer p-4 rounded-lg transition-all duration-200
-        ${isSelected ? 'ring-4 ring-blue-400 ring-opacity-50' : ''}
-        ${isTarget ? 'ring-2 ring-yellow-400' : ''}
+        relative flex flex-col-reverse items-center cursor-pointer p-2 sm:p-4 rounded-lg transition-all duration-200
+        ${isSelected ? 'ring-2 sm:ring-4 ring-blue-400 ring-opacity-50' : ''}
+        ${isTarget ? 'ring-1 sm:ring-2 ring-yellow-400' : ''}
         hover:bg-muted
         ${className}
       `}
       data-testid={`tower-${towerIndex}`}
     >
       {/* Tower Base */}
-      <div className="w-24 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded shadow-lg"></div>
-      <div className="w-2 h-48 bg-gradient-to-t from-purple-500 to-blue-500 rounded-t shadow-lg"></div>
+      <div className="w-16 sm:w-20 md:w-24 h-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded shadow-lg"></div>
+      <div className="w-2 h-32 sm:h-40 md:h-48 bg-gradient-to-t from-purple-500 to-blue-500 rounded-t shadow-lg"></div>
       
       {/* Tower Label */}
-      <div className="absolute -bottom-8 text-sm font-medium text-muted-foreground">
+      <div className="absolute -bottom-6 sm:-bottom-8 text-xs sm:text-sm font-medium text-muted-foreground">
         Башня {towerIndex + 1}
       </div>
       

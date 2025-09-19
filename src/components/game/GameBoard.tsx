@@ -38,7 +38,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className={`flex justify-center items-end gap-8 min-h-[400px] p-20 ${className}`}
+      className={`flex justify-center items-end gap-2 sm:gap-4 md:gap-6 lg:gap-8 min-h-[300px] sm:min-h-[350px] md:min-h-[400px] p-4 sm:p-8 md:p-12 lg:p-20 ${className}`}
     >
       {gameState.towers.map((tower, index) => (
         <motion.div

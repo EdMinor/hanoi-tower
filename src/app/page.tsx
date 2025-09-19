@@ -101,7 +101,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-6 md:py-8">
         {/* Header */}
         <Header
           title="🏗️ Ханойская башня"
@@ -115,7 +115,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           {/* Stats - над башнями по центру (только во время игры) */}
           {gameState.gameStarted && (
-            <div className="mb-1 flex justify-center">
+            <div className="mb-2 sm:mb-4 flex justify-center">
               <Stats
                 moveCount={gameState.moveCount}
                 minMoves={minMoves}
@@ -131,21 +131,23 @@ export default function Home() {
           )}
 
           {/* Game Board */}
-          <div className="mb-8">
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <GameBoard
               gameState={gameState}
               onTowerClick={handleTowerClick}
             />
           </div>
+          
           {/* Game Rules */}
-          <div className="mt-0 flex justify-center">
+          <div className="mb-4 sm:mb-6 flex justify-center">
             <div className="w-full max-w-md">
               <GameRules />
             </div>
           </div>
-          {/* Keyboard Controls Info */}
-          <div className="mb-6 text-center">
-            <div className="inline-flex items-center gap-4 px-4 py-2 bg-card/50 rounded-lg text-sm text-muted-foreground">
+          
+          {/* Keyboard Controls Info - скрыть на мобильных */}
+          <div className="mb-4 sm:mb-6 text-center hidden sm:block">
+            <div className="inline-flex items-center gap-2 sm:gap-4 px-3 sm:px-4 py-2 bg-card/50 rounded-lg text-xs sm:text-sm text-muted-foreground">
               <span className="font-medium">Клавиатурное управление:</span>
               <span>1,2,3 - башни</span>
               <span>R - сброс</span>

@@ -14,10 +14,10 @@ const GameControls: React.FC<GameControlsProps> = ({
   const discCountOptions = [3, 4, 5, 6];
 
   return (
-    <div className={`bg-card text-card-foreground rounded-lg p-6 shadow-md border ${className}`}>
-      <div className="flex flex-col gap-4">
+    <div className={`bg-card text-card-foreground rounded-lg p-4 sm:p-6 shadow-md border ${className}`}>
+      <div className="flex flex-col gap-3 sm:gap-4">
         {/* Main Controls - горизонтально */}
-        <div className="flex flex-wrap gap-3 justify-center">
+        <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
           <Button
             onClick={() => {
               onPlayClick?.();
@@ -47,10 +47,10 @@ const GameControls: React.FC<GameControlsProps> = ({
         {/* Settings - под кнопками */}
         {!gameState.gameStarted && (
           <div className="flex flex-col gap-2 items-center">
-            <label className="text-sm font-medium text-card-foreground text-center">
+            <label className="text-xs sm:text-sm font-medium text-card-foreground text-center">
               Количество дисков:
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-1 sm:gap-2">
               {discCountOptions.map(count => (
                 <Button
                   key={count}
@@ -60,7 +60,7 @@ const GameControls: React.FC<GameControlsProps> = ({
                   }}
                   variant={gameState.discCount === count ? 'primary' : 'secondary'}
                   size="sm"
-                  className="min-w-[40px]"
+                  className="min-w-[36px] sm:min-w-[40px] text-xs sm:text-sm"
                 >
                   {count}
                 </Button>
