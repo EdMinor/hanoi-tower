@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
             </div>
             
             {/* Links */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
               <button
                 onClick={() => setShowImpressum(true)}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -39,6 +39,16 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Datenschutz
+              </button>
+              <button
+                onClick={() => {
+                  // Clear cookie consent to show banner again
+                  localStorage.removeItem('cookie-consent');
+                  window.location.reload();
+                }}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Cookie-Einstellungen
               </button>
             </div>
           </div>

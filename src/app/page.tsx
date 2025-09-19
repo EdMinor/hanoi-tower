@@ -13,6 +13,7 @@ import Modal from '@/components/ui/Modal';
 import Button from '@/components/ui/Button';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CookieBanner from '@/components/ui/CookieBanner';
 
 export default function Home() {
   const {
@@ -208,6 +209,9 @@ export default function Home() {
       
       {/* Footer */}
       <Footer />
+      
+      {/* Cookie Banner */}
+      <CookieBanner />
     </div>
   );
 }
