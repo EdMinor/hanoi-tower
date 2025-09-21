@@ -66,10 +66,10 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
             <h4 className="font-semibold mb-2">Kontakt</h4>
             <p className="text-muted-foreground">
               E-Mail: <a href="mailto:contact@edmin.dev" className="text-primary hover:underline">
-                contact@edmin.dev
+                eduard.minor@gmail.com
               </a><br />
               Website: <a href="https://edmin.dev" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                edmin.dev
+                www.edmin.dev
               </a>
             </p>
           </div>
@@ -113,7 +113,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-2">2. Cookies und lokale Speicherung</h4>
+            <h4 className="font-semibold mb-2">2. Cookies und lokale Speicherung</h4> 
             <p className="text-muted-foreground">
               Die Anwendung verwendet localStorage für die Speicherung von Einstellungen (Thema, Sound). Diese Daten werden nur lokal gespeichert und nicht an Server übertragen.
             </p>
@@ -122,7 +122,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
           <div>
             <h4 className="font-semibold mb-2">3. Hosting</h4>
             <p className="text-muted-foreground">
-              Diese Website wird auf Vercel gehostet. Weitere Informationen finden Sie in der 
+              Diese Website wird auf Vercel gehostet. Weitere Informationen finden Sie in der  
               <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                 Vercel Datenschutzerklärung
               </a>.
@@ -132,9 +132,9 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
           <div>
             <h4 className="font-semibold mb-2">4. Kontakt</h4>
             <p className="text-muted-foreground">
-              Bei Fragen zum Datenschutz wenden Sie sich an: 
+              Bei Fragen zum Datenschutz wenden Sie sich an:  
               <a href="mailto:contact@edmin.dev" className="text-primary hover:underline">
-                contact@edmin.dev
+                eduard.minor@gmail.com
               </a>
             </p>
           </div>
