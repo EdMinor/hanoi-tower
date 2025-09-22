@@ -27,13 +27,15 @@ const Header: React.FC<HeaderProps> = ({
               height={40}
               className="w-8 h-10 sm:w-10 sm:h-12 dark:invert"
             />
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-              Ханойская башня
-            </h1>
+            <div className="flex flex-col items-start">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                Ханойская башня
+              </h1>
+              <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-tight">
+                Классическая головоломка онлайн
+              </p>
+            </div>
           </div>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground hidden sm:block">
-            Классическая головоломка онлайн
-          </p>
         </div>
         
         {/* Right side - Controls */}
