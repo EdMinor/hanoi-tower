@@ -25,7 +25,7 @@ export default function Home() {
     getMinMoves,
     getEfficiency,
     getGameTime,
-  } = useGame(4);
+  } = useGame(3);
 
   const { theme, toggleTheme } = useTheme();
   const { 
