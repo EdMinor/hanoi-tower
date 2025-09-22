@@ -3,6 +3,7 @@ import { HeaderProps } from '@/types/ui';
 import ThemeToggle from '../ui/ThemeToggle';
 import SoundToggle from '../ui/SoundToggle';
 import AboutModal from '../ui/AboutModal';
+import Image from 'next/image';
 
 const Header: React.FC<HeaderProps> = ({
   title,
@@ -18,9 +19,18 @@ const Header: React.FC<HeaderProps> = ({
       <div className="flex flex-col sm:flex-row items-center justify-between max-w-4xl mx-auto gap-4">
         {/* Center - Title */}
         <div className="flex-1 order-2 sm:order-1">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
-            {title}
-          </h1>
+          <div className="flex items-center justify-center gap-3 mb-1 sm:mb-2">
+            <Image
+              src="/logo.svg"
+              alt="Ханойская башня"
+              width={32}
+              height={40}
+              className="w-8 h-10 sm:w-10 sm:h-12 dark:invert"
+            />
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+              Ханойская башня
+            </h1>
+          </div>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground hidden sm:block">
             Классическая головоломка онлайн
           </p>
