@@ -106,6 +106,13 @@ export default function Home() {
     }
   }, [gameState.gameStarted]);
 
+  // Сброс флага показа модалки при начале новой игры
+  React.useEffect(() => {
+    if (gameState.gameStarted && !gameState.gameCompleted) {
+      victoryModalShownRef.current = false;
+    }
+  }, [gameState.gameStarted, gameState.gameCompleted]);
+
   const minMoves = getMinMoves();
   const efficiency = getEfficiency();
   const gameTime = getGameTime();
